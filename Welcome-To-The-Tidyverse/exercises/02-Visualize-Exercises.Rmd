@@ -1,10 +1,10 @@
 ---
-title: "Visualize Data"
+title: "Visualizando Datos"
 ---
 
-## Your Turn 0
+## Tu Turno 0
 
-Add a setup chunk that loads the tidyverse packages.
+Añadí un chunk de setup que cargue el Tidyverse.
 
 
 
@@ -14,27 +14,27 @@ mpg
 ```
 
 
-## Your Turn 1
+## Tu Turno 1
 
-Run the code on the slide to make a graph. Pay strict attention to spelling, capitalization, and parentheses!
+Ejecutá el código de la diapositiva para hacer un gráfico. Prestá especial atención al deletreo, la capitalización y los paréntesis.
 
 ```{r}
 
 ```
 
-## Your Turn 2
+## Tu Turno 2
 
-Add `color`, `size`, `alpha`, and `shape` aesthetics to your graph. Experiment.  
+Añadí aesthetics de `color`, `size`, `alpha`, y `shape` a tu gráfico. Experimentá.  
 
 ```{r}
 ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy))
 ```
 
-## Help Me
+## Ayuda
 
-What do `facet_grid()` and `facet_wrap()` do? 
-(run the code, interpret, convince your group)
+¿Qué hacen `facet_grid()` y `facet_wrap()`? 
+(ejecutá el código, interpretá y convencé a tu grupo)
 
 ```{r}
 # Makes a plot that the commands below will modify
@@ -47,41 +47,41 @@ q + facet_wrap(~ class)
 ```
 
 
-## Your Turn 3
+## Tu Turno 3
 
-Replace this scatterplot with one that draws boxplots. Use the cheatsheet. Try your best guess.
+Reemplazá el gráfico de dispersión con un boxplot. Usá la cheathseet.
 
 ```{r}
 ggplot(mpg) + geom_point(aes(class, hwy))
 ```
 
-## Your Turn 4
+## Tu Turno 4
 
-Make a histogram of the `hwy` variable from `mpg`. Hint: do not supply a y variable.
-
-```{r}
-
-```
-
-## Your Turn 5
-
-Use the help page for `geom_histogram` to make the bins 2 units wide.
+Hacé un histograma de la variable `hwy` del dataset `mpg`. Pista: no indiques una variable y.
 
 ```{r}
 
 ```
 
-## Your Turn 6
+## Tu Turno 5
 
-Make a bar chart `class` colored by `class`. Use the help page for `geom_bar` to choose a "color" aesthetic for class.
+Usá la página de ayuda de `geom_histogram` para hacer que las columnas tengan 2 unidades de ancho.
 
 ```{r}
 
 ```
 
-## Quiz
+## Tu Turno 6
 
-What will this code do?
+Hacé un gréfico de barras de `class` coloreado por `class`. Usá la página de ayuda de `geom_bar` para elegir la aesthetic de color.
+
+```{r}
+
+```
+
+## Pregunta
+
+¿Qué hace este código?
 
 ```{r}
 ggplot(mpg) + 
@@ -89,9 +89,9 @@ ggplot(mpg) +
   geom_smooth(aes(displ, hwy))
 ```
 
-## Quiz
+## Pregunta
 
-What is different about this plot? Run the code!
+¿Qué diferencia hay con este código? Ejecutalo
 
 ```{r}
 p <- ggplot(mpg) + 
@@ -102,9 +102,9 @@ library(plotly)
 ggplotly(p)
 ```
 
-## Your Turn 7
+## Tu Turno 7
 
-What does `getwd()` return?
+¿Qué retorna `getwd()`?
 
 ```{r}
 
@@ -112,9 +112,9 @@ What does `getwd()` return?
 
 ***
 
-# Take aways
+# Resumen
 
-You can use this code template to make thousands of graphs with **ggplot2**.
+Podés usar esta plantilla para hacer miles de gráficos con **ggplot2**.
 
 ```{r eval = FALSE}
 ggplot(data = <DATA>) +

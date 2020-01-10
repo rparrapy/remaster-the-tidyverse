@@ -22,7 +22,7 @@ most <- name_data %>%
 
 most_sex <- most %>% 
   pull("sex") %>% 
-  switch("Male" = "boys", "Female" = "girls")
+  switch("Male" = "niños", "Female" = "niñas")
 
 sex <-
   name_data %>% 
@@ -30,18 +30,18 @@ sex <-
   summarise(n = sum(n)) %>% 
   filter(n == max(n)) %>% 
   pull("sex") %>% 
-  switch("Male" = "boy's", "Female" = "girl's")
+  switch("Male" = "niño", "Female" = "niña")
 ```
 
-There have been **`r n`** children named `r params$name`. The name `r params$name` was most popular in `r most$year`, when there were `r most$n` `r most_sex` named `r params$name`. `r params$name` is traditionally a `r sex` name.
+Ha habido en total **`r n`** niños llamados `r params$name`. El nombre `r params$name` fue más popular en `r most$year`, cuando hubo `r most$n` `r most_sex` llamados `r params$name`. `r params$name` es tradicionalmente un nombre de `r sex`.
 
 ```{r echo = FALSE}
 name_data %>% 
   ggplot() +
     geom_ribbon(mapping = aes(x = year, ymax = prop, fill = sex), ymin = 0, alpha = 0.5) +
-    labs(title = glue("Popularity of the name {params$name}"), 
-         subtitle = glue("The proportion of boys and girls named {params$name}, 1880-2017"), 
-         caption = "Data from the US Social Security Administration",
+    labs(title = glue("Popularidad del nombre {params$name}"), 
+         subtitle = glue("Proporción de niños y niñas llamados {params$name}, 1880-2017"), 
+         caption = "Datos de la US Social Security Administration",
          y = "proportion") +
     theme_bw()
 ```

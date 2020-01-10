@@ -1,5 +1,6 @@
 ---
-title: "Garrett"
+title: "Sol"
+output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
@@ -8,22 +9,22 @@ library(babynames)
 
 name_data <- 
   babynames %>% 
-  filter(name == "Garrett") %>% 
+  filter(name == "Sol") %>% 
   mutate(sex = case_when(sex == "M" ~ "Male", 
                          sex == "F" ~ "Female"))
 
-# Total number of children
+# Número total de niños
 n <- sum(name_data$n)
 
-# most$year is most popular year
-# most$n is the number of children that year
-# most_sex is whether those children were boys or girls
+# most$year es el año más popular
+# most$n es el número de niños nacidos ese año
+# most_sex indica si esos niños fueron niños o niñas
 most <- name_data %>% 
   filter(n == max(n))
 
 most_sex <- most %>% 
   pull("sex") %>% 
-  switch("Male" = "boys", "Female" = "girls")
+  switch("Male" = "niños", "Female" = "niñas")
 
 # Has the name been a boy's or girl's name?
 sex <-
@@ -32,18 +33,18 @@ sex <-
   summarise(n = sum(n)) %>% 
   filter(n == max(n)) %>% 
   pull("sex") %>% 
-  switch("Male" = "boy's", "Female" = "girl's")
+  switch("Male" = "ninho", "Female" = "ninha")
 ```
 
-There have been **TODO** children named Garrett. The name Garrett was most popular in TODO, when TODO TODO were named Garrett. Garrett is traditionally a TODO name.
+Ha habido en total `r n` niños llamados Sol. El nombre Sol fue más popular en `r most$year`, cuando `r most$n` `r most_sex` se llamaron Sol. Sol es tradicionalmente un nombre de `r sex`.
 
-```{r}
+```{r echo=FALSE}
 name_data %>% 
   ggplot() +
     geom_ribbon(mapping = aes(x = year, ymax = prop, fill = sex), ymin = 0, alpha = 0.5) +
-    labs(title = "Popularity of the name Garrett", 
-         subtitle = "The proportion of boys and girls named Garrett, 1880-2017", 
-         caption = "Data from the US Social Security Administration",
+    labs(title = "Popularidad del nombre Sol", 
+         subtitle = "Proporcion de ninhos y ninhas llamados Sol, 1880-2017", 
+         caption = "Datos de la US Social Security Administration",
          y = "proportion") +
     theme_bw()
 ```

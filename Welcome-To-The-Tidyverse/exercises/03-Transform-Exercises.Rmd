@@ -1,5 +1,5 @@
 ---
-title: "Transform Data"
+title: "Transformando Datos"
 ---
 
 ```{r setup}
@@ -20,14 +20,17 @@ pollution <- tribble(
 # library(babynames)
 ```
 
-# Import Data
+# Importar datos
 
-## Your Turn 1
+## Tu Turno 1
 
-Set the working directory to `03-Transform`. Then import the `babynames.csv` data set, which is in the `03-Transform` folder, as `babynames`. Then copy the import code into the code chunk below. Does it run?
+Mové el directorio de trabajo a `03-Transform`. Luego importá el dataset `babynames.csv` , which que está en la carpeta `03-Transform` como `babynames`. Copiá y pegá el código de importación al chunk de abajo. ¿Se ejecuta correctamente?
 
 ```{r}
-
+library(readr)
+setwd("~/Workspace/codium/tidyverse/remaster-the-tidyverse/Welcome-To-The-Tidyverse")
+babynames <- read_csv("babynames.csv")
+View(babynames)
 ```
 
 ```{r}
@@ -36,17 +39,17 @@ babynames
 
 # dplyr
 
-## Your Turn 2
+## Tu Turno 2
 
-Alter the code to select just the `n` column:
+Modifica el código para seleccionar la columna `n`:
 
 ```{r}
 select(babynames, name, prop)
 ```
 
-## Quiz
+## Pregunta
 
-Which of these is NOT a way to select the `name` and `n` columns together?
+¿Cuál de las siguiente **NO** es una manera de seleccionar las columnas `name` y `n`?
 
 ```{r}
 select(babynames, -c(year, sex, prop))
@@ -55,68 +58,68 @@ select(babynames, starts_with("n"))
 select(babynames, ends_with("n"))
 ```
 
-## Your Turn 3
+## Tu Turno 3
 
-Use `filter`, `babynames`, and the logical operators to find:
+Usá `filter`, `babynames`, y los operadores lógicos para encontrar:
 
-* All of the names where prop is greater than or equal to 0.08  
-* All of the children named "Sea"  
-
-```{r}
-
-```
-
-## Your Turn 4
-
-Use Boolean operators to return only the rows that contain:
-
-* _Boys_ named Sue  
-* Names that were used by exactly 5 or 6 children in 1880  
-* Names that are one of Acura, Lexus, or Yugo
+* Todos los nombres donde prop es mayor o igual a 0.08
+* Todos los niños llamados"Sea"  
 
 ```{r}
 
 ```
 
-## Help Me
+## Tu Turno 4
 
-What is the smallest value of n?
-What is the largest?
+Usá los operadores booleanos para retornar solamente las filas que contengan:
 
-```{r}
-
-```
-
-## Your Turn 5
-
-Use `%>%` to write a sequence of functions that: 
-
-1. Filters babynames to just the girls that were born in 2017, *then...*  
-2. Selects the `name` and `n` columns, *then...*  
-3. Arranges the results so that the most popular names are near the top.
+* _Niños_ llamados Sue  
+* Nombres que fueron usados exactamente por 5 o 6 niños en 1880
+* Nombres que están entre: Acura, Lexus, or Yugo
 
 ```{r}
 
 ```
 
-## Your Turn 6 - Exam
+## Ayuda
 
-1. Trim `babynames` to just the rows that contain your `name` and your `sex`  
-2. Trim the result to just the columns that will appear in your graph (not strictly necessary, but useful practice)  
-3. Plot the results as a line graph with `year` on the x axis and `prop` on the y axis
+¿Cuál es el menor valor de n?
+¿Y el mayor?
 
 ```{r}
 
 ```
 
-## Your Turn 7
+## Tu Turno 5
 
-Copmplete the code below to extract the rows where `name == "Khaleesi"`. Then use `summarise()` and `sum()` and `min()` to find:
+Usá `%>%` para escribir una secuencia de funciones que:
 
-1. The total number of children named Khaleesi
-2. The first year Khaleesi appeared in the data
+1. Filtre babynames a solo las niñas nacidas en 2017, *luego...*
+2. Seleccione las columnas `name` y `n`, *entonces...*  
+3. Ordene los resultados de modo que los nombres más populares queden arriba.
 
-*(Hint: Be sure to remove each `_` before running the code)*
+```{r}
+
+```
+
+## Tu Turno 6 - Examen
+
+1. Filtra babynames a las filas que contengan un nombre y sexo dados
+2. Selecciona solo las columnas que aparecerán en el gráfico final (no es estrictamente necesario, si útil en la práctica)
+3. Grafica los resultados usando un gráfico de línea con `year` en el eje x y `prop` en el eje y
+
+```{r}
+
+```
+
+## Tu Turno 7
+
+Completá el código para extraer las filas donde el `name == “Khaleesi"`. Entonces usa `summarise()` y `sum()` y `min()` para encontrar:
+1. El número total de niños llamados Khaleesi
+2. El primer año en el cual Khaleesi aparece en el dataset
+
+
+*(Pista: Aseguráte de borrar todos los `_` antes de ejecutar el código)*
 
 ```{r}
 babynames ___ 
@@ -124,11 +127,11 @@ babynames ___
   ___________(total = ________, first = _______)
 ```
 
-## Your Turn 8
+## Tu Turno 8
 
-Use `group_by()`, `summarise()`, and `arrange()` to display the ten most popular names. Compute popularity as the *total* number of children of a single gender given a name.
+Completá el código con `group_by()`,`summarise()`, y `arrange()` para mostrar las diez combinaciones más comunes de name y sex. Calcular la popularidad como el total de niños con un nombre y sexo dados.
 
-*(Hint: Be sure to remove each `_` before running the code)*
+*(Pista: Aseguráte de borrar todos los `_` antes de ejecutar el código)*
 
 ```{r}
 babynames %>%
@@ -137,20 +140,21 @@ babynames %>%
   _______(desc(_____))
 ```
 
-## Your Turn 9
+## Tu Turno 9
 
-Use `group_by()` to calculate and then plot the total number of children born each year over time.
+1. Usá `group_by()` para calcular el número de niños nacidos por cada año. 
+2. Graficá los resultados como un gráfico de línea: total vs año.
 
 ```{r}
 
 ```
 
-## Your Turn 10
+## Tu Turno 10
 
-Fill in the blanks to: 
-Rank each name _within its year and sex_. 
+Completá los espacios en blanco para:
+Rankear cada nombre _por cada año y sexo_.
 
-*(Hint: Be sure to remove each `_` before running the code)*
+*(Pista: Aseguráte de borrar todos los `_` antes de ejecutar el código)*
 
 ```{r}
 babynames %>% 
@@ -158,12 +162,11 @@ babynames %>%
   ______(rank = min_rank(____(prop)))
 ```
 
-## Your Turn 11
+## Tu Turno 11
 
-Fill in the blanks to: 
-Compute the median of the ranks for each name (i.e., _for each combination of name and sex_). Arrange the results from highest median rank to lowest.
+Completá los espacios en blanco para calcular la mediana por cada nombre (por cada combinación de `name` y `sexo`). Ordená los resultados teniendo en cuenta la mediana, de mayor a menor.
 
-*(Hint: Be sure to remove each `_` before running the code)*
+*(Pista: Aseguráte de borrar todos los `_` antes de ejecutar el código)*
 
 ```{r}
 babynames %>% 
@@ -177,16 +180,16 @@ babynames %>%
 
 ***
 
-# Take aways
+# Resumen
 
-* Extract variables with `select()`  
-* Extract cases with `filter()`  
-* Arrange cases, with `arrange()`  
+* Extraé variables con `select()`  
+* Extraé ocurrencias coh `filter()`  
+* Ordená ocurrencias con `arrange()`  
 
-* Make tables of summaries with `summarise()`  
-* Make new variables, with `mutate()`  
-* Do groupwise operations with `group_by()`
+* Hacé resúmenes de tablas con `summarise()`  
+* Creá nuevas variables con `mutate()`  
+* Hacé operaciones de agrupamiento con `group_by()`
 
-* Connect operations with `%>%`  
+* Conectá operaciones con `%>%`  
 
 

@@ -2,84 +2,93 @@
 title: "R Markdown"
 ---
 
-This is an R Markdown file. It contains plain text interspersed with grey chunks of code. You can use the file to take notes _and_ run code. For example, you can write your name on the line below. Try it: 
+```{r setup}
+library(tidyverse)
+```
 
 
+Este es un archivo R Markdown. Contiene texto plano intercalado con chunks de c??digo. Pod??s usar este archivo para tomar notas _y_ ejecutar c??digo. Por ejemplo, pod??s escribir tu nombre en la l??nea siguiente. Intentalo:
+
+Rodrigo
 
 ```{r}
-# You can write code in chunks that look like this.
-# This chunk uses the code plot(cars) to plot a data set.
-# To run the code, click the Green play button at the
-# top right of this chunk. Try it!
+# Pod??s escribir c??digo en chunks como este.
+# Este chunk usa el c??digo plot(cars) para graficar un dataset.
+# Para ejecutar el c??digo, hac?? click en el bot??n verde de Play 
+# en la esquina superior derecha de este chunk. Probalo!
 plot(cars)
 ```
 
-Good job! The results of a code chunk will appear beneath the chunk. You can click the x above the results to make them go away, but let's not do that.
+Bien hecho! Los resultado del chunk de c??digo aparecen abajo del chunk. Pod??s hacer click en la x encima de los resultados para borrarlos, pero no hagamos eso ahora.
 
-You can open a new R Markdown file by going to **File > New File > R Markdown...**. Then click OK. But let's not open a new file now—keep reading this one! 
+Pod??s abrir un nuevo archivo R Markdown yendo a **File > New File > R Markdown...**. Luego hac?? click en OK. Pero sigamos leyendo este archivo por ahora!
 
-# Adding chunks
+# A??adiendo chunks
 
-To add a new code chunk, press *Cmd+Option+I* (*Ctrl+Alt+I* on Windows), or click the *Insert* button at the top of this document, then select *R*. R Markdown will add a new, empty chunk at your cursor's location.
+Para a??adir un nuevo chunk de c??digo pod??s presionar *Cmd+Option+I* (*Ctrl+Alt+I* en Windows), o hacer click al bot??n *Insert* en la parte superior de este documento y luego seleccionar *R*. R Markdown a??adir?? un chunk nuevo y vac??o en la posici??n actual del cursor.
 
-Try making a code chunk below:
-
-
-
-Good job! For today, you should place all of your R code inside of code chunks.
+Trat?? de a??adir un chunk de c??digo abajo:
 
 ```{r}
-# Sometimes you might want to run only some of the code 
-# in a code chunk. To do that, highlight the code to 
-# run and then press Cmd + Enter (Control + Enter on 
-# Windows). If you do not highlight any code, R will 
-# run the line of code that your cursor is on.
-# Try it now. Run mean(1:5) but not the line below.
+
+```
+
+
+??Buen trabajo! Por hoy, todo tu c??digo de R debe ir adentro de chunks.
+
+```{r}
+# A veces podr??as querer ejecutar solo parte del c??digo 
+# en un chunk. Para hacerlo, seleccion?? el c??digo
+# a ejecutar y presion?? Cmd + Enter (Control + Enter en 
+# Windows). Si no seleccion??s ning??n c??digo R va a 
+# ejecutar la l??nea de c??digo donde est?? tu cursor.
+# Probalo ahora. Ejecut?? mean(1:5) pero no la l??nea siguiente.
 mean(1:5)
 warning("You shouldn't run this!")
 ```
 
 ```{r}
-# You can click the downward facing arrow to the left of the play button to run
-# every chunk above the current code chunk. This is useful if the code in your
-# chunk uses object that you made in previous chunks.
+# Pod??s hacer click en la flecha que apunta para abajo para ejecutar 
+# todos los chunks arriba del actual.Esto es ??til si el c??digo en tu
+# chunk usa objeto que construiste en chunks anteriores.
 # Sys.Date()
 ```
 
-Did you notice the green lines in the code chunk above? They are *code comments*, lines of text that R ignores when it runs the code. R will treat everything that appears after `#` on a line as a code comment. As a result, if you run the chunk above, nothing will happen—it is all code comments (and that's fine)!
+??Notaste las l??neas m??s claras en el chunk anterior? Son *comentarios*, l??neas de texto que R ignora al ejecutar el c??digo. R trata todo lo que aparece despu??s de un `#` en una l??nea como un comentario. Como resultado, si ejecut??s el chunk anterior, no pasa nada (y eso est?? bien).
 
-Remove the `#` on the last line of the chunk above and then rerun the chunk. Can you tell what `Sys.Date()` does?
+Borr?? el `#` en la ??ltima l??nea del chunk anterior y ejecutalo de vuelta. ??Pod??s decirme que hace `Sys.Date()`?
 
-By the way, you only need to use code comments _inside_ of code chunks. R knows not to try to run the text that you write outside of code chunks.
+Por cierto, solo necesit??s usar comentario _dentro_ de los chunks de c??digo. R sabe que no debe ejecutar el texto que escribas fuera de los chunks de c??digo.
 
-# Text formatting
+# Formateo de texto
 
-Have you noticed the funny highlighting that appears in this document? R Markdown treats text surrounded by *asterisks*, **double asterisks**, and `backticks` in special ways. It is R Markdown's way of saying that these words are in
+??Te dist cuenta del resaltado particular en este documento? R Markdown trata el texto rodeado
+de *asteriscos*, **asteriscos dobles**, y `backticks` de manera especial. Es la forma particularIt de R Markdown de decir que estas palabras est??n en
 
-- _italics_
-- *also italics*
-- **bold**, and
-- `code font`
+- _cursiva_
+- *tambi??n cursiva*
+- **negrita**, and
+- `formato de c??digo`
 
-`*`, `**`, and \` are signals used by a text editing format known as `markdown`. R Markdown uses `markdown` to turn your plain looking .Rmd documents into polished reports. Let's give that a try.
+`*`, `**`, y \` son se??ales usadas por un formato de edici??n de texto llamado `markdown`. R Markdown usa `markdown` para convertir tus archivos planos .Rmd en reportes pulidos. Prob??moslo. 
 
-# Reports
+# Reportes
 
-When you click the `knit` button at the top of an R Markdown file (like this one), R Markdown generates a polished copy of your report. R Markdown:
+Al hacer click en el bot??n `knit` en la parte superior de un archivo R Markdown (como este), R Markdown una versi??n pulida de tu reporte. R Markdown:
 
-1. Transforms all of your markdown cues into actual formatted text (e.g. bold text, italic text, etc.)
-2. Reruns all of your code chunks in a clean R session and appends the results to the finished report.
-3. Saves the finished report alongside your .Rmd file
+1. Transforma toda las se??ales markdown en texto formateado (por ejemplo texto en negritas, texto en cursivas, etc.)
+2. Ejecuta nuevamente todos los chunks de c??digo en una sesi??n nueva de R y a??ade los resultados al reporte.
+3. Guarda el reporte finalizado junto a tu archivo .Rmd
 
-Click the *knit* button at the top of this document or press *Cmd+Shift+K* (*Ctrl+Shift+K* on Windows) to render the finished report. The RStudio IDE will open the report so you can see its contents. For now, our reports will be HTML files. Try clicking *Knit* now.
+Hac?? click en el bot??n *knit* en la parte superior de este documento o presion?? *Cmd+Shift+K* (*Ctrl+Shift+K* on Windows) para renderizar el reporte final. El IDE RStudio abrir?? el reporte para que puedas ver su contenido. Por ahora, nuestros reportes ser??n archivos HTML. Prob?? haciendo click en *Knit* ahora.
 
-Good job! You'll learn more about R Markdown throughout the day!
+??Buen trabajo! Vas a aprender m??s sobre R Markdown en estos d??as.
 
-# R Packages
+# Paquetes de R
 
-Here is one last code chunk that we will use in the next exercise. If you uncomment the code and try to run it, it won't work. If you don't believe me try!
+Aqu?? hay un ??ltimo chunk de c??digo que usaremos en el pr??ximo ejericios. Si descoment??s el c??digo y trat??s de ejecutarlo, no va a funcionar. Si no me cre??s, ??intentalo!
 
 
 ```{r}
-# ggplot(data = diamonds) + geom_point(aes(x = carat, y = price))
+ggplot(data = diamonds) + geom_point(aes(x = carat, y = price))
 ```
